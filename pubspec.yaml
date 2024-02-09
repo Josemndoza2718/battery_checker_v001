@@ -31,20 +31,18 @@ dependencies:
   dio:
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
+  card_swiper: ^3.0.1  
   http: ^1.1.0
   provider: ^6.0.0
   shared_preferences: ^2.2.2
   sqflite: ^2.3.0
-  
-  
-  
-  
+  local_auth: ^2.1.8
+  flutter_svg: ^2.0.7
 
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -71,6 +69,9 @@ flutter:
   assets:
   - assets/images/
   - assets/icons/
+  - assets/icons/png/
+  - assets/icons/svg/
+  - assets/logo/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -84,7 +85,29 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/raleway/Raleway-Black.ttf
+        - asset: assets/fonts/raleway/Raleway-BlackItalic.ttf
+        - asset: assets/fonts/raleway/Raleway-Bold.ttf
+        - asset: assets/fonts/raleway/Raleway-BoldItalic.ttf
+        - asset: assets/fonts/raleway/Raleway-ExtraBold.ttf
+        - asset: assets/fonts/raleway/Raleway-ExtraBoldItalic.ttf
+        - asset: assets/fonts/raleway/Raleway-ExtraLight.ttf
+        - asset: assets/fonts/raleway/Raleway-ExtraLightItalic.ttf
+        - asset: assets/fonts/raleway/Raleway-Italic-VariableFont_wght.ttf
+        - asset: assets/fonts/raleway/Raleway-Italic.ttf
+        - asset: assets/fonts/raleway/Raleway-Light.ttf
+        - asset: assets/fonts/raleway/Raleway-LightItalic.ttf
+        - asset: assets/fonts/raleway/Raleway-Medium.ttf
+        - asset: assets/fonts/raleway/Raleway-MediumItalic.ttf
+        - asset: assets/fonts/raleway/Raleway-Regular.ttf
+        # - asset: fonts/raleway/Raleway-SemiBold.ttf
+        #   weight: 600
+        # - asset: fonts/raleway/Raleway-SemiBoldItalic.ttf
+        #   weight: 700
+        # - asset: fonts/raleway/Raleway-VariableFont_wght.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

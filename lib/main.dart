@@ -1,4 +1,4 @@
-import 'package:battery_checker_v01/presentation/login_screen.dart';
+import 'package:battery_checker_v01/view/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
