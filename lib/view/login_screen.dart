@@ -1,7 +1,9 @@
 import 'dart:ui';
 
 import 'package:battery_checker_v01/services/local_auth_service.dart';
+import 'package:battery_checker_v01/view/battery_register_info_screen.dart';
 import 'package:battery_checker_v01/view/battery_register_screen.dart';
+import 'package:battery_checker_v01/view/user_register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,6 +17,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  /// ********************************************************************************************
+  ///
+  ///                                 DECLARATIONS OF VARIABLE
+
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -27,6 +33,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool faceId = false;
 
+  /// ********************************************************************************************
+  ///
+  ///                                 DECLARATION INITSTATE
+
   @override
   void initState() {
     super.initState();
@@ -38,10 +48,12 @@ class _LoginScreenState extends State<LoginScreen> {
         );
   }
 
+  /// ********************************************************************************************
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /**COLOR FONDO */
+      /**BACKGROUND COLOR */
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -58,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 55),
-              /**LOGO PRINCIPAL*/
+              /**PRINCIPAL LOGO*/
               Container(
                 color: Colors.transparent,
                 child: SvgPicture.asset(
@@ -66,15 +78,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   fit: BoxFit.cover,
                 ),
               ),
-              //const SizedBox(height: 10),
-              /**TEXTO LOGO */
+              /**TEXT LOGO */
               const Text(
                 "Logo genérico de ejemplo",
                 style: TextStyle(
                     fontSize: 17, color: Colors.black, fontFamily: "Raleway"),
               ),
               const SizedBox(height: 30),
-              /**TEXTFIELD CORREO/TELEFON*/
+              /**TEXTFIELD EMAIL/PHONE_NUMBER*/
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: TextField(
@@ -94,8 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
-                      borderRadius:
-                          BorderRadius.circular(10.0), // Radio de los bordes
+                      borderRadius: BorderRadius.circular(10.0),
                       borderSide: const BorderSide(color: Colors.grey),
                     ),
                     enabledBorder: OutlineInputBorder(
@@ -105,15 +115,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                       borderSide: const BorderSide(
-                        color: Colors.blue,
+                        color: Color(0xff05CAAD),
                         width: 3,
-                      ), // Color del borde cuando el campo está enfocado
+                      ),
                     ),
                   ),
                 ),
               ),
               const SizedBox(height: 10),
-              /**TEXTFIELD CONTRASEÑA*/
+              /**TEXTFIELD PASSWORD*/
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: TextField(
@@ -136,16 +146,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       onPressed: () {
                         setState(() {
-                          _obscureText =
-                              !_obscureText; // Cambia el estado de ocultar/mostrar texto
+                          _obscureText = !_obscureText;
                         });
                       },
                     ),
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
-                      borderRadius:
-                          BorderRadius.circular(10.0), // Radio de los bordes
+                      borderRadius: BorderRadius.circular(10.0),
                       borderSide: const BorderSide(color: Colors.blue),
                     ),
                     enabledBorder: OutlineInputBorder(
@@ -157,12 +165,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderSide: const BorderSide(
                         color: Colors.blue,
                         width: 3,
-                      ), // Color del borde cuando el campo está enfocado
+                      ),
                     ),
                   ),
                 ),
               ),
-              /**BOTON OLVIDASTE CONTRASEÑA */
+              /**BUTTON FORGOT PASSWORD */
               Padding(
                 padding:
                     const EdgeInsets.only(left: 20.0, right: 20.0, top: 0.0),
@@ -212,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 15),
-              /**BOTON INICIAR SESIÓN */
+              /**BUTTON LOGIN */
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -226,9 +234,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   minimumSize: MaterialStatePropertyAll(Size(300, 50)),
                   padding: MaterialStatePropertyAll(EdgeInsets.all(20)),
                   backgroundColor: MaterialStatePropertyAll(Colors.black),
-                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.all(Radius.elliptical(15, 15)))),
+                  shape: MaterialStatePropertyAll(
+                    RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.all(Radius.elliptical(15, 15))),
+                  ),
                   shadowColor: MaterialStatePropertyAll(Colors.black),
                   elevation: MaterialStatePropertyAll(25),
                 ),
@@ -243,21 +253,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              // ElevatedButton(
-              //   onPressed: () {},
-              //   style: ElevatedButton.styleFrom(
-              //     BoxDecoration(boxShadow: [BoxShadow(color: Colors.black, blurRadius: 10, offset: Offset(5, 0))]),
-              //       minimumSize: const Size(300, 50),
-              //       padding: const EdgeInsets.all(20),
-              //       backgroundColor: Colors.black,
-              //       shape: const RoundedRectangleBorder(
-              //           borderRadius:
-              //               BorderRadius.all(Radius.elliptical(15, 15)))),
-              //   child: const Text(
-              //     "Iniciar Sesión",
-              //     style: TextStyle(fontSize: 18, color: Colors.white),
-              //   ),
-              // ),
               const SizedBox(height: 30),
               /*FINGER_PRINT AND FACE_ID */
               Row(
@@ -353,7 +348,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
               const SizedBox(height: 20),
-              /**O CONCECTATE A TRAVES DE */
+              /**OR CONNECT THROUGH */
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -392,8 +387,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   /**GOOGLE */
                   Container(
-                    width: 100,
-                    height: 80,
+                    width: 90,
+                    height: 70,
                     decoration: BoxDecoration(
                       //color: Colors.red,
                       gradient: const LinearGradient(colors: [
@@ -419,8 +414,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(width: 15),
                   /**APPLE */
                   Container(
-                    width: 100,
-                    height: 80,
+                    width: 90,
+                    height: 70,
                     decoration: BoxDecoration(
                       //color: Colors.red,
                       gradient: const LinearGradient(colors: [
@@ -446,8 +441,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(width: 15),
                   /**FACEBOOK */
                   Container(
-                    width: 100,
-                    height: 80,
+                    width: 90,
+                    height: 70,
                     decoration: BoxDecoration(
                       //color: Colors.red,
                       gradient: const LinearGradient(colors: [
@@ -473,7 +468,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
               const SizedBox(height: 20),
-              /**REGISTRATE */
+              /**REGISTER */
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -489,12 +484,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextButton(
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => RegisterScreen(),
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RegisterScreen(),
+                        ),
+                      );
                     },
                     child: const Text(
                       "Regístrate",
@@ -514,6 +509,10 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  /// ********************************************************************************************
+  ///
+  ///                                 METHOD _AUTHENTICATE_FACEID
+
   // Future<void> _authenticateFaceId() async {
   //   try {
   //     bool authFaceId = await authentication.authenticate(
@@ -531,6 +530,10 @@ class _LoginScreenState extends State<LoginScreen> {
   //     print(e);
   //   }
   // }
+
+  /// ********************************************************************************************
+  ///
+  ///                                 METHOD _GETAVAILABLEBIOMETRICS
 
   Future<void> _getAvailableBiometrics() async {
     List<BiometricType> availableBiometrics =

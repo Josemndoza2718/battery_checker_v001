@@ -1,4 +1,4 @@
-import 'package:battery_checker_v01/model/battery_register_model.dart';
+import 'package:battery_checker_v01/model/db_models/battery_register_model.dart';
 import 'package:flutter/material.dart';
 
 class CreateBatteryWidget extends StatefulWidget {

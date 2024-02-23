@@ -1,4 +1,4 @@
-import 'package:battery_checker_v01/model/battery_register_model.dart';
+import 'package:battery_checker_v01/model/db_models/battery_register_model.dart';
 import 'package:battery_checker_v01/view_model/sql_db_services/res/db_tables.dart';
 import 'package:sqflite/sqflite.dart';
 

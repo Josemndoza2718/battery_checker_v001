@@ -1,3 +1,5 @@
+import 'package:battery_checker_v01/main.dart';
+import 'package:battery_checker_v01/view/cards/codia_page.dart';
 import 'package:battery_checker_v01/view/my_cars_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -55,74 +57,154 @@ class _CarInfoState extends State<CarInfo> {
               key: formkey2,
               child: Column(
                 children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      label: const Text("data"),
-                      constraints: BoxConstraints.loose(const Size(300, 80)),
-                      border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.horizontal(
-                          left: Radius.elliptical(20, 20),
-                          right: Radius.elliptical(20, 20),
-                        ),
+                  //VEHICLESTYPES
+                  Container(
+                    width: 300,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      border: Border.all(
+                        color: Colors.grey, // Color del contorno
+                        width: 0.8, // Ancho del contorno
                       ),
+                      borderRadius: BorderRadius.circular(
+                          16), // Radio de borde para esquinas redondeadas
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: DropdownButton<String>(
+                          //hint: const Text("Agregar batería a..."),
+                          value: dropdownBardVechicleType,
+                          underline: Container(color: Colors.transparent),
+                          style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
+                              fontFamily: "Raleway"),
+                          onChanged: (newValue) {
+                            setState(() {
+                              dropdownBardVechicleType = newValue;
+                            });
+                          },
+                          isExpanded: true,
+                          iconEnabledColor: Colors.black,
+                          items: const [
+                            DropdownMenuItem<String>(
+                                value: null,
+                                child: Text(
+                                  "Agregar marca...",
+                                )),
+                            DropdownMenuItem<String>(
+                                value: "One",
+                                child: Text(
+                                  "Subaru",
+                                )),
+                            DropdownMenuItem<String>(
+                                value: "Two",
+                                child: Text(
+                                  "Suzuki",
+                                )),
+                          ]),
                     ),
                   ),
                   const Divider(height: 10, color: Colors.transparent),
+                  //CAR_MOD
                   TextFormField(
                     decoration: InputDecoration(
-                      label: const Text("data"),
-                      constraints: BoxConstraints.loose(const Size(300, 80)),
+                      label: const Text(
+                        "Modelo",
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 16,
+                            fontFamily: "Raleway"),
+                      ),
+                      constraints: BoxConstraints.loose(const Size(300, 50)),
                       border: const OutlineInputBorder(
                         borderRadius: BorderRadius.horizontal(
-                          left: Radius.elliptical(20, 20),
-                          right: Radius.elliptical(20, 20),
+                          left: Radius.elliptical(15, 15),
+                          right: Radius.elliptical(15, 15),
                         ),
                       ),
+                      focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff05CAAD),
+                                    width: 3,
+                                  ),
+                                ),
                     ),
                   ),
                   const Divider(height: 10, color: Colors.transparent),
+                  //CAR_YEAR AND CAR_ID
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      //*CAR_YEAR
                       TextFormField(
                         decoration: InputDecoration(
-                          label: const Text("data2"),
+                          label: const Text(
+                            "Año",
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 16,
+                                fontFamily: "Raleway"),
+                          ),
                           constraints:
                               BoxConstraints.loose(const Size(135, 50)),
                           border: const OutlineInputBorder(
                             borderRadius: BorderRadius.horizontal(
-                              left: Radius.elliptical(20, 20),
-                              right: Radius.elliptical(20, 20),
+                              left: Radius.elliptical(15, 15),
+                              right: Radius.elliptical(15, 15),
                             ),
                           ),
+                          focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff05CAAD),
+                                    width: 3,
+                                  ),
+                                ),
                         ),
                       ),
+                      const SizedBox(width: 30),
+                      //*TEXTFORMFIELD CAR_ID
                       TextFormField(
                         decoration: InputDecoration(
-                          label: const Text("data3"),
+                          label: const Text(
+                            "Placa",
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 16,
+                                fontFamily: "Raleway"),
+                          ),
                           constraints:
                               BoxConstraints.loose(const Size(135, 50)),
                           border: const OutlineInputBorder(
                             borderRadius: BorderRadius.horizontal(
-                              left: Radius.elliptical(20, 20),
-                              right: Radius.elliptical(20, 20),
+                              left: Radius.elliptical(15, 15),
+                              right: Radius.elliptical(15, 15),
                             ),
                           ),
+                          focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xff05CAAD),
+                                    width: 3,
+                                  ),
+                                ),
                         ),
                       ),
                     ],
                   ),
                   const Divider(height: 40, color: Colors.transparent),
-                  //BOTONES AGREGAR OTRA MARCA Y CONTINUAR
+                  //BUTTON PLUS AND BUTTON CONTINUE
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      //BOTON AGREGAR OTRA MARCA
+                      //BUTTON PLUS
                       Container(
                         //color: Colors.red,
                         child: Row(
                           children: [
-                            const SizedBox(width: 10),
                             IconButton(
                               onPressed: () {
                                 // Navigator.push(
@@ -136,20 +218,21 @@ class _CarInfoState extends State<CarInfo> {
                                 "assets/icons/svg/plus.svg",
                                 fit: BoxFit.cover,
                               ),
-                              iconSize: 40,
+                              iconSize: 50,
                             ),
                             const Text(
                               "Agregar\notra marca",
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w400,
                                   fontFamily: "Raleway"),
                             ),
                           ],
                         ),
                       ),
-                      //BOTON CONTINUAR
+                      const SizedBox(width: 30),
+                      //BUTTON CONTINUE
                       Container(
                         //color: Colors.amber,
                         child: Row(
@@ -159,7 +242,7 @@ class _CarInfoState extends State<CarInfo> {
                               "Continuar",
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w400,
                                   fontFamily: "Raleway"),
                             ),
@@ -168,7 +251,7 @@ class _CarInfoState extends State<CarInfo> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const CarInfo(),
+                                    builder: (context) => CodiaPage(),
                                   ),
                                 );
                               },
@@ -176,51 +259,48 @@ class _CarInfoState extends State<CarInfo> {
                                 "assets/icons/svg/buttonext.svg",
                                 fit: BoxFit.cover,
                               ),
-                              iconSize: 40,
+                              iconSize: 50,
                             ),
-                            const SizedBox(
-                              width: 10,
-                            )
                           ],
                         ),
                       ),
                     ],
                   ),
                   const Divider(height: 50, color: Colors.transparent),
-                  Container(
-                    //color: Colors.amber,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "Más tarde",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: "Raleway"),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const MyCars(),
-                              ),
-                            );
-                          },
-                          icon: SvgPicture.asset(
-                            "assets/icons/svg/btondown.svg",
-                            fit: BoxFit.cover,
-                          ),
-                          iconSize: 40,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        )
-                      ],
-                    ),
-                  ),
+                  // Container(
+                  //   //color: Colors.amber,
+                  //   child: Column(
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     children: [
+                  //       const Text(
+                  //         "Más tarde",
+                  //         style: TextStyle(
+                  //             color: Colors.black,
+                  //             fontSize: 18,
+                  //             fontWeight: FontWeight.w400,
+                  //             fontFamily: "Raleway"),
+                  //       ),
+                  //       IconButton(
+                  //         onPressed: () {
+                  //           Navigator.push(
+                  //             context,
+                  //             MaterialPageRoute(
+                  //               builder: (context) => const MyCars(),
+                  //             ),
+                  //           );
+                  //         },
+                  //         icon: SvgPicture.asset(
+                  //           "assets/icons/svg/btondown.svg",
+                  //           fit: BoxFit.cover,
+                  //         ),
+                  //         iconSize: 40,
+                  //       ),
+                  //       const SizedBox(
+                  //         width: 10,
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
             )

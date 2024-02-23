@@ -1,15 +1,10 @@
 import 'package:battery_checker_v01/view/battery_register_info_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
-class BatteryRegister extends StatefulWidget {
+class BatteryRegister extends StatelessWidget {
   const BatteryRegister({super.key});
 
-  @override
-  State<BatteryRegister> createState() => _BatteryRegisterState();
-}
-
-class _BatteryRegisterState extends State<BatteryRegister> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,14 +53,14 @@ class _BatteryRegisterState extends State<BatteryRegister> {
                 children: [
                   ElevatedButton.icon(
                     icon: SvgPicture.asset(
-                      "assets/icons/svg/battery.svg",
+                      "assets/icons/svg/bat1.svg",
                       fit: BoxFit.cover,
                     ),
                     onPressed: () {
                        Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const BatteryInformation(),
+                      builder: (context) => BatteryInformation(),
                     ),
                   );
                     },
@@ -86,7 +81,7 @@ class _BatteryRegisterState extends State<BatteryRegister> {
                   ),
                   ElevatedButton.icon(
                     icon: SvgPicture.asset(
-                      "assets/icons/svg/battery.svg",
+                      "assets/icons/svg/car.svg",
                       fit: BoxFit.cover,
                     ),
                     onPressed: null,
